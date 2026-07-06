@@ -10,66 +10,86 @@ body{
 margin:0;
 padding:0;
 font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+background:linear-gradient(135deg,#1f2937,#111827);
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-text-align:center;
 color:white;
 }
 
-.box{
-background:rgba(255,255,255,0.15);
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
 padding:40px;
 border-radius:20px;
-backdrop-filter:blur(10px);
 max-width:600px;
+text-align:center;
+box-shadow:0 0 30px rgba(0,0,0,.3);
 }
 
 h1{
-font-size:42px;
+font-size:38px;
+margin-bottom:20px;
 }
 
 p{
-font-size:22px;
-line-height:1.6;
+font-size:20px;
+line-height:1.8;
 }
 
 button{
-margin-top:20px;
-padding:15px 35px;
-font-size:20px;
+margin-top:30px;
+padding:15px 40px;
+font-size:18px;
 border:none;
 border-radius:50px;
-background:white;
-color:#ff4d6d;
 cursor:pointer;
+background:white;
+color:#111827;
+transition:.3s;
 }
 
 button:hover{
 transform:scale(1.05);
 }
-</style>
 
+</style>
 </head>
 
 <body>
 
-<div class="box">
+<div class="card">
+
 <h1>❤️ Для Айман ❤️</h1>
 
 <p>
-Если ты открыла этот сайт,<br>
-значит я хотел сказать тебе<br>
-несколько важных слов.
+Привет, Айман.<br><br>
+
+Это Димаш.<br><br>
+
+Наверное, ты не ожидала увидеть этот сайт.<br><br>
+
+Последнее время я начал изучать создание сайтов и решил, что свой первый сайт хочу сделать именно для тебя.<br><br>
+
+Я не хочу ни к чему тебя принуждать и ничего не прошу.<br><br>
+
+Мне просто захотелось сказать несколько добрых слов.<br><br>
+
+Если тебе интересно — нажми кнопку ниже.
 </p>
 
-<button onclick="alert('Продолжение скоро... ❤️')">
-Начать
-</button>
+<button onclick="nextPage()">Начать</button>
 
 </div>
+
+<script>
+
+function nextPage(){
+alert("Продолжение уже совсем скоро ❤️");
+}
+
+</script>
 
 </body>
 </html>
