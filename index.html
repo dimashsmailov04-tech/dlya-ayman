@@ -6,6 +6,7 @@
 <title>Для Айман ❤️</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,30 +15,70 @@ font-family:Arial,sans-serif;
 }
 
 body{
-height:100vh;
+background:linear-gradient(135deg,#ffd6e7,#ffeaf2);
 display:flex;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#ffd6e7,#ffc7da,#ffeaf2);
-overflow:hidden;
+height:100vh;
 }
 
 .card{
+background:white;
 width:90%;
-max-width:600px;
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(12px);
+max-width:650px;
 padding:40px;
 border-radius:25px;
-text-align:center;
 box-shadow:0 15px 40px rgba(0,0,0,.15);
-animation:show 1s;
+text-align:center;
 }
 
-@keyframes show{
+h1{
+color:#ff4d88;
+margin-bottom:25px;
+}
+
+.message{
+font-size:22px;
+line-height:1.8;
+color:#444;
+margin:25px 0;
+}
+
+button{
+margin-top:15px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+background:#ff4d88;
+color:white;
+transition:.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#ff2f73;
+}
+
+.answer{
+display:block;
+width:100%;
+margin-top:15px;
+}
+
+.hidden{
+display:none;
+}
+
+.fade{
+animation:fade .6s;
+}
+
+@keyframes fade{
 from{
 opacity:0;
-transform:translateY(30px);
+transform:translateY(20px);
 }
 to{
 opacity:1;
@@ -45,34 +86,6 @@ transform:translateY(0);
 }
 }
 
-h1{
-color:#d63384;
-font-size:40px;
-margin-bottom:25px;
-}
-
-p{
-font-size:21px;
-color:#5b3a45;
-line-height:1.8;
-}
-
-button{
-margin-top:35px;
-padding:16px 45px;
-font-size:20px;
-background:#ff5f9e;
-color:white;
-border:none;
-border-radius:50px;
-cursor:pointer;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-background:#ff3f87;
-}
 </style>
 
 </head>
@@ -81,32 +94,151 @@ background:#ff3f87;
 
 <div class="card">
 
+<div id="page1">
+
 <h1>❤️ Для Айман ❤️</h1>
 
-<p>
+<div class="message">
+
 Привет, Айман. 😊<br><br>
 
 Это Димаш.<br><br>
 
 Наверное, ты не ожидала увидеть этот сайт.<br><br>
 
-Последнее время я начал изучать создание сайтов и решил, что свой первый сайт хочу сделать именно для тебя.<br><br>
+Последнее время я начал изучать создание сайтов и решил сделать первый сайт именно для тебя.<br><br>
 
-Я не хочу ни к чему тебя принуждать и ничего не прошу.<br><br>
+Я ничего не прошу.<br><br>
 
-Мне просто захотелось сказать тебе несколько добрых слов.<br><br>
+Мне просто захотелось сказать тебе несколько добрых слов.
 
-Если тебе интересно — нажми кнопку ниже.
-</p>
+</div>
 
-<button onclick="startStory()">Начать ❤️</button>
+<button onclick="nextPage()">
+Начать
+</button>
+
+</div>
+
+<div id="page2" class="hidden fade">
+
+<h1>💬</h1>
+
+<div class="message">
+
+<b>Димаш:</b><br><br>
+
+Привет, Айман 😊<br><br>
+
+Как у тебя дела?
+
+</div>
+
+<button class="answer" onclick="answer(1)">
+😊 Спасибо, у меня всё хорошо
+</button>
+
+<button class="answer" onclick="answer(2)">
+😔 Мне немного грустно, но нормально
+</button>
+
+<button class="answer" onclick="answer(3)">
+🙂 Круто без тебя
+</button>
+
+</div>
+
+<div id="page3" class="hidden fade">
+
+<div id="result" class="message"></div>
+
+<button onclick="finish()">
+Продолжить ❤️
+</button>
+
+</div>
+
+<div id="page4" class="hidden fade">
+
+<h1>🤍</h1>
+
+<div class="message">
+
+Спасибо, что прошла эту маленькую историю.<br><br>
+
+Я не хочу, чтобы ты думала, будто я забыл о тебе.<br><br>
+
+Ты сама говорила, что тебе нужно немного свободы.<br><br>
+
+И именно поэтому я старался не беспокоить тебя.<br><br>
+
+Но если однажды тебе станет грустно...<br><br>
+
+Или просто захочется поговорить...<br><br>
+
+Или понадобится помощь...<br><br>
+
+Ты знаешь, где меня найти.<br><br>
+
+Я всегда отвечу.<br><br>
+
+Береги себя.<br><br>
+
+И пожалуйста...<br>
+
+Не забывай кушать. 🌸
+
+</div>
+
+</div>
 
 </div>
 
 <script>
-function startStory(){
-alert("Совсем скоро здесь начнётся наш небольшой разговор ❤️");
+
+function nextPage(){
+
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+
 }
+
+function answer(x){
+
+document.getElementById("page2").classList.add("hidden");
+document.getElementById("page3").classList.remove("hidden");
+
+let text="";
+
+if(x==1){
+
+text="😊 Правда рад это слышать.<br><br>Пусть каждый твой день будет спокойным и счастливым.";
+
+}
+
+if(x==2){
+
+text="😔 Мне жаль, что тебе грустно.<br><br>Если когда-нибудь захочешь поговорить — я всегда на связи.";
+
+}
+
+if(x==3){
+
+text="🙂 Если это действительно так, значит я рад, что у тебя всё хорошо.<br><br>Именно этого я тебе и желаю.";
+
+}
+
+document.getElementById("result").innerHTML=text;
+
+}
+
+function finish(){
+
+document.getElementById("page3").classList.add("hidden");
+document.getElementById("page4").classList.remove("hidden");
+
+}
+
 </script>
 
 </body>
